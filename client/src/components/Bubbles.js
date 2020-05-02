@@ -1,4 +1,5 @@
 import React, { useState, useEffect } from "react";
+import {Link} from "react-router-dom"
 import { Pack } from "@potion/layout";
 import { Svg, Circle } from "@potion/element";
 
@@ -7,26 +8,27 @@ const Bubbles = ({ colors }) => {
   useEffect(() => {
     const generateBubbleData = colors.map((_, i) => ({
       value: Math.floor(Math.random() * (colors.length * 2)) + 1,
-      key: `${i + 1}`
+      key: `${i + 1}`,
     }));
     setBubbleData(generateBubbleData);
   }, [colors]);
 
   return (
     <div className="bubble-wrap">
-      <p>bubbles</p>
+      <Link to="/"><p>bubbles</p></Link>
+      
       <Svg width={400} height={400}>
         <Pack
           data={{
-            children: bubbleData
+            children: bubbleData,
           }}
-          sum={datum => datum.value}
+          sum={(datum) => datum.value}
           size={[400, 400]}
           includeRoot={false}
-          nodeEnter={d => ({ ...d, r: 0 })}
+          nodeEnter={(d) => ({ ...d, r: 0 })}
           animate
         >
-          {nodes =>
+          {(nodes) =>
             nodes
               .map(({ x, y, r, key }, i) => {
                 if (i < colors.length) {
@@ -42,7 +44,7 @@ const Bubbles = ({ colors }) => {
                 }
                 return null;
               })
-              .filter(v => v)
+              .filter((v) => v)
           }
         </Pack>
       </Svg>

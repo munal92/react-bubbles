@@ -21,7 +21,7 @@ body,
 }
 
 .spacer {
-  height: 100%;
+  
 }
 
 .bubble-wrap {
@@ -104,5 +104,14 @@ form {
    align-content: center;
    justify-content: flex-start;
    padding: 10rem;
+   margin-left:22rem;
+   border: 2px solid black
   
+}
+.login_cont input,label{
+  display: flex;
+  flex-direction: column;
+  margin:5px;
+  
+ 
 }
